@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package sharedRegions;
+package serverSide.sharedRegions;
 import commonInfra.*;
-import entities.*;
 import java.util.Stack;
+import clientSide.stubs.*;
 /**
  *
  * @author manuel
@@ -15,10 +15,10 @@ public class ArvLounge {
     
     private int countPassengers; //variable that gives us the number of the current passnger
     private boolean[] passengersDestinations; //Vector with the final destination of each passenger, if true the airport is its final destination
-    private Repository repository;
+    private RepositoryStub repository;
     private Stack<Bag> planeHoldBags; //Bags currently in the planes hold
 
-    public ArvLounge(Repository repository){
+    public ArvLounge(RepositoryStub repository){
         this.countPassengers = 0;
         this.repository = repository;
         this.passengersDestinations = new boolean[6];

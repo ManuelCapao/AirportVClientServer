@@ -3,19 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
-import sharedRegions.*;
+package clientSide.entities;
+import clientSide.stubs.*;
 
 public class BusDriver extends Thread {
     private boolean dayWorkEnded; //if true the BusDriver ends his day of work
     private int passengersInTheBus; //Number of passengers currently on the bus
 
     //Shared Entities
-    private DepTranferQuay depTransferQuay;
-    private ArvTranferQuay arvTransferQuay;
-    private Repository repository;
+    private DepTranferQuayStub depTransferQuay;
+    private ArvTranferQuayStub arvTransferQuay;
+    private RepositoryStub repository;
 
-    public BusDriver(ArvTranferQuay arvTransferQuay, DepTranferQuay depTransferQuay, Repository repository){
+    public BusDriver(ArvTranferQuayStub arvTransferQuay, DepTranferQuayStub depTransferQuay, RepositoryStub repository){
         super("BusDriver");
         this.arvTransferQuay=arvTransferQuay;
         this.depTransferQuay=depTransferQuay;

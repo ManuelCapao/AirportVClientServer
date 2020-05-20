@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entities;
+package clientSide.entities;
 import commonInfra.*;
-import sharedRegions.*;
+import clientSide.stubs.*;
+
 
 
 public class Passenger extends Thread{
@@ -20,24 +21,24 @@ public class Passenger extends Thread{
     //Bags
 
     //Shared Entities
-    private ArvLounge arvLounge;
-    private ArvTranferQuay arvTransferQuay;
-    private ArvTerminalExit arvTerminalExit;
-    private DepTranferQuay depTransferQuay;
-    private DepTerminalEntrance depTerminalEntrance;
-    private BgCollectionPoint bgCollectionPoint;
-    private BgReclaimOffice bgReclaimOffice;
+    private ArvLoungeStub arvLounge;
+    private ArvTranferQuayStub arvTransferQuay;
+    private ArvTerminalExitStub arvTerminalExit;
+    private DepTranferQuayStub depTransferQuay;
+    private DepTerminalEntranceStub depTerminalEntrance;
+    private BgCollectionPointStub bgCollectionPoint;
+    private BgReclaimOfficeStub bgReclaimOffice;
 
     public Passenger(int M,
                     int numberOfLuggages,
                     boolean isFinalDestination,
-                    ArvLounge arvLounge,
-                    ArvTranferQuay arvTransferQuay,
-                    ArvTerminalExit arvTerminalExit,
-                    DepTranferQuay depTransferQuay,
-                    DepTerminalEntrance depTerminalEntrance,
-                    BgCollectionPoint bgCollectionPoint,
-                    BgReclaimOffice bgReclaimOffice){
+                    ArvLoungeStub arvLounge,
+                    ArvTranferQuayStub arvTransferQuay,
+                    ArvTerminalExitStub arvTerminalExit,
+                    DepTranferQuayStub depTransferQuay,
+                    DepTerminalEntranceStub depTerminalEntrance,
+                    BgCollectionPointStub bgCollectionPoint,
+                    BgReclaimOfficeStub bgReclaimOffice){
         super("Passenger"+ M);
         this.arvLounge = arvLounge;
         this.passengerID = M;
