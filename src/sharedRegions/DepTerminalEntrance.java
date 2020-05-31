@@ -16,9 +16,10 @@ public class DepTerminalEntrance {
     private int countFinish;
     private ArvTerminalExit arv;
     private Repository rep;
-    public DepTerminalEntrance(Repository rep){
+    public DepTerminalEntrance(Repository rep,ArvTerminalExit arv){
         this.countFinish = 0;
         this.rep = rep;
+        this.arv = arv;
         
     }
     
@@ -46,9 +47,6 @@ public class DepTerminalEntrance {
         }catch (InterruptedException e) {}
     }
     
-    public void setArvTerminalExit(ArvTerminalExit arv){
-        this.arv = arv;
-    }
     public synchronized int getCount(){
         return this.countFinish;
     }

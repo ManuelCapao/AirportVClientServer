@@ -40,6 +40,9 @@ public class BgCollectionPointProxy implements ProxyInterface{
             case SET_NO_MORE_BAGS:
                 baggageCollectionPoint.setNoMoreBags();
                 break;
+            case CHECK_NO_MORE_BAGS:
+                response.setBooleanValue(baggageCollectionPoint.checkNoMoreBags());
+                break;
             case BG_COLLECTION_POINT_SIMULATION_FINISHED:
                 this.simulationFinished = true;
                 break;

@@ -51,7 +51,7 @@ public class RepositoryProxy implements ProxyInterface {
             case REPOSITORY_ENTER_LUGGAGE_BELT: 
                 repository.enterLuggageBelt(); 
                 break;
-            case REPOSITORY_REMOVE_LUGGAGE_IN_PLANE_HOLD: 
+            case REPOSITORY_REMOVE_LUGGAGE_PLANE_HOLD: 
                 repository.removeLuggagePlainHold(); 
                 break;
             case REPOSITORY_NEW_FLIGHT: 
@@ -66,7 +66,7 @@ public class RepositoryProxy implements ProxyInterface {
             case REPOSITORY_SET_PASSENGER_STATE: 
                 repository.setPassengerState(message.getIdentifier(), (PassengerStates)message.getEntityState()); 
                 break;
-            case REPOSITORY_FINAL_STATS: 
+            case REPOSITORY_ADD_REPORT: 
                 repository.addReport(); 
                 break;
             case REPOSITORY_SIMULATION_FINISHED: 

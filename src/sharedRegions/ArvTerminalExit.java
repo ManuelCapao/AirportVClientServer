@@ -15,9 +15,10 @@ public class ArvTerminalExit {
     private Repository rep;
     private int countFinish;
 
-    public ArvTerminalExit(Repository rep){
+    public ArvTerminalExit(Repository rep,DepTerminalEntrance dep){
         this.countFinish = 0;
         this.rep = rep;
+        this.dep = dep;
         
     }
     /* Metodos do Passenger */
@@ -44,11 +45,7 @@ public class ArvTerminalExit {
         
         
     }
-    
-
-    public void setDepTerminalEntrance(DepTerminalEntrance dep){
-        this.dep = dep;
-    }
+   
     public synchronized int getCount(){
         return this.countFinish;
     }

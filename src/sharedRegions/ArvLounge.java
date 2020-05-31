@@ -67,7 +67,7 @@ public class ArvLounge {
      */ 
     public void noMoreBagsToCollect(){
         Porter p = (Porter) Thread.currentThread();
-        //p.setState(PorterStates.WPTL);
+        p.setPorterState(PorterStates.WPTL);
     }
 
 

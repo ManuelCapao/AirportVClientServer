@@ -33,7 +33,7 @@ public class ArvTerminalExitProxy implements ProxyInterface{
             case ARV_TERMINAL_EXIT_GET_COUNT:
                 response.setIntValue(arrivalTerminalExit.getCount());
                 break;
-            case ARRIVAL_TERMINAL_EXIT_NOTIFY_PASSENGERS:
+            case ARV_TERMINAL_EXIT_NOTIFY_PASSENGERS:
                 arrivalTerminalExit.notifyPassengers();
                 break;
             case ARV_TERMINAL_EXIT_SIMULATION_FINISHED:

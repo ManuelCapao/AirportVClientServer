@@ -28,7 +28,7 @@ public class StoreRoom {
     /**
      * porter puts bag in the store room, and updates repository and the porter's state
      */
-    public void carryToAppropriateStore(Bag bag)
+    public synchronized void carryToAppropriateStore(Bag bag)
     {
         Porter porter = (Porter) Thread.currentThread();
         //porter.setState(PorterStates.ASTR);
