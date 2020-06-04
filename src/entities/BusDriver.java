@@ -5,18 +5,17 @@
  */
 package entities;
 import sharedRegions.*;
-import stubs.*;
 
 public class BusDriver extends Thread {
     private boolean dayWorkEnded; //if true the BusDriver ends his day of work
     private int passengersInTheBus; //Number of passengers currently on the bus
 
     //Shared Entities
-    private DepTranferQuayStub depTransferQuay;
-    private ArvTransferQuayStub arvTransferQuay;
-    private RepositoryStub repository;
+    private DepTransferQuay depTransferQuay;
+    private ArvTransferQuay arvTransferQuay;
+    private Repository repository;
 
-    public BusDriver(ArvTransferQuayStub arvTransferQuay, DepTranferQuayStub depTransferQuay, RepositoryStub repository){
+    public BusDriver(ArvTransferQuay arvTransferQuay, DepTransferQuay depTransferQuay, Repository repository){
         super("BusDriver");
         this.arvTransferQuay=arvTransferQuay;
         this.depTransferQuay=depTransferQuay;
