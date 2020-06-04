@@ -6,7 +6,7 @@
 package entities;
 import commonInfra.*;
 import sharedRegions.*;
-
+import stubs.*;
 
 public class Passenger extends Thread{
     private int passengerID;
@@ -20,24 +20,24 @@ public class Passenger extends Thread{
     //Bags
 
     //Shared Entities
-    private ArvLounge arvLounge;
-    private ArvTransferQuay arvTransferQuay;
-    private ArvTerminalExit arvTerminalExit;
-    private DepTransferQuay depTransferQuay;
-    private DepTerminalEntrance depTerminalEntrance;
-    private BgCollectionPoint bgCollectionPoint;
-    private BgReclaimOffice bgReclaimOffice;
+    private ArvLoungeStub arvLounge;
+    private ArvTransferQuayStub arvTransferQuay;
+    private ArvTerminalExitStub arvTerminalExit;
+    private DepTransferQuayStub depTransferQuay;
+    private DepTerminalEntranceStub depTerminalEntrance;
+    private BgCollectionPointStub bgCollectionPoint;
+    private BgReclaimOfficeStub bgReclaimOffice;
 
     public Passenger(int M,
                     int numberOfLuggages,
                     boolean isFinalDestination,
-                    ArvLounge arvLounge,
-                    ArvTransferQuay arvTransferQuay,
-                    ArvTerminalExit arvTerminalExit,
-                    DepTransferQuay depTransferQuay,
-                    DepTerminalEntrance depTerminalEntrance,
-                    BgCollectionPoint bgCollectionPoint,
-                    BgReclaimOffice bgReclaimOffice){
+                    ArvLoungeStub arvLounge,
+                    ArvTransferQuayStub arvTransferQuay,
+                    ArvTerminalExitStub arvTerminalExit,
+                    DepTransferQuayStub depTransferQuay,
+                    DepTerminalEntranceStub depTerminalEntrance,
+                    BgCollectionPointStub bgCollectionPoint,
+                    BgReclaimOfficeStub bgReclaimOffice){
         super("Passenger"+ M);
         this.arvLounge = arvLounge;
         this.passengerID = M;
@@ -74,15 +74,14 @@ public class Passenger extends Thread{
     public void run()
     {
         char toDo;
-        toDo= arvLounge.whatShouldIDo(); 
+        toDo= arvLounge.whatShouldIDo(this.passengerID, this.isFinalDestination,this.numBags);
         switch (toDo) {
-            case 'T':
-                
-                arvTransferQuay.takeABus();
-                arvTransferQuay.waitToCatch();
-                arvTransferQuay.enterTheBus();
-                depTransferQuay.leaveTheBus();
-                depTerminalEntrance.prepareNextLeg();
+            case 'T':    
+                arvTransferQuay.takeABus(this.passengerID);
+                arvTransferQuay.waitToCatch(this.passengerID);
+                arvTransferQuay.enterTheBus(this.passengerID);
+                depTransferQuay.leaveTheBus(this.passengerID);
+                depTerminalEntrance.prepareNextLeg(this.passengerID);
                 break;
             case 'C':
                 while(bagsCollected != numBags){
@@ -94,24 +93,17 @@ public class Passenger extends Thread{
                     else if (bgCollectionPoint.checkNoMoreBags()){
                
                         break;
-                    }
-                    
+                    }       
                 }   
                 if (bagsCollected != numBags){
-                    bgReclaimOffice.reportMissingBags();
+                    bgReclaimOffice.reportMissingBags(this.passengerID);
                 }   
-                arvTerminalExit.goHome();
+                arvTerminalExit.goHome(this.passengerID);
                 break;
             default:
                
-                arvTerminalExit.goHome();
+                arvTerminalExit.goHome(this.passengerID);
                 break;
-        }
-        
-        
-        
+        }     
     }
-
-
-
 }

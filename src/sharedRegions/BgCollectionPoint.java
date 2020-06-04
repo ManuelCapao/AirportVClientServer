@@ -8,15 +8,16 @@ import commonInfra.*;
 import entities.*;
 import java.util.LinkedList;
 import java.util.Queue;
+import stubs.*;
 /**
  *
  * @author manuel
  */
-public class BgCollectionPoint {
+public class BgCollectionPoint implements SharedRegion{
     private boolean checkBelt;
-    private Repository repository;
+    private RepositoryStub repository;
     private Queue<Bag> bagsInBelt;
-    public BgCollectionPoint(Repository repository){
+    public BgCollectionPoint(RepositoryStub repository){
         this.repository= repository;
         this.checkBelt = false;
         this.bagsInBelt = new LinkedList<>();
@@ -27,7 +28,7 @@ public class BgCollectionPoint {
      * Porter carries bag to conveyor belt
      */
     public synchronized void carryToAppropriateStore(Bag bag){
-        Porter porter = (Porter) Thread.currentThread();
+        repository.setPorterState(PorterStates.ALCB);
         //porter.setState(PorterStates.ALCB); //sets porter state to "at the luggage conveyor belt"
         this.bagsInBelt.add(bag); //adds the bag to the conveyor belt
         repository.enterLuggageBelt();
@@ -52,7 +53,7 @@ public class BgCollectionPoint {
      * 
      */
     public synchronized Bag goCollectABag(int id){
-        
+        System.out.println("colectar mala: "+ id);
         repository.setPassengerState(id, PassengerStates.LCP); //sets passenger state to "at the luggage collection point"
         Bag bag = null;
         try{

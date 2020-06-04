@@ -15,10 +15,11 @@ public class BgReclaimOfficeStub extends GenericStub{
         super(hostname, port);
     }
     
-    public void reportMissingBags(){
+    public void reportMissingBags(int id){
         
         Message out = new Message();
-        out.setMessageType(MessageType.REPORT_MISSING_BAGS);      
+        out.setMessageType(MessageType.REPORT_MISSING_BAGS);   
+        out.setIdentifier(id);
         this.process(out);
     }
     public void simulationFinished(){

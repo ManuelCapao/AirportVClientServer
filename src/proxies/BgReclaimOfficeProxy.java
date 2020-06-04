@@ -27,7 +27,7 @@ public class BgReclaimOfficeProxy implements ProxyInterface {
         Message response = new Message();
         switch(message.getMessageType()) {
             case REPORT_MISSING_BAGS:
-                baggageReclaimOffice.reportMissingBags();
+                baggageReclaimOffice.reportMissingBags(message.getIdentifier());
                 break;
             case BG_RECLAIM_OFFICE_SIMULATION_FINISHED:
                 this.simulationFinished = true;

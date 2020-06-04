@@ -19,7 +19,7 @@ import java.util.Date;
  *
  * @author manuel
  */
-public class Repository {
+public class Repository implements SharedRegion{
 
     //------Bus Driver------
     //Fila de pessoas para usar o autocarro
@@ -28,7 +28,7 @@ public class Repository {
     int passengersFinished = 0;
     int passengersRunning = 0;
     int bagsInPlaneHold = 0;
-    int bagsLost = 0;
+    int Totalbags = 0;
     private File f;
     private PrintWriter pw;
 
@@ -131,6 +131,7 @@ public class Repository {
      * @param numbags
      */
     public synchronized void passengerEnterLounge(int id, boolean destination, int numbags){
+        this.Totalbags += numbags;
         this.passengersCount++; //Adds to total number of passengers
         this.passengersLuggage[id] = numbags; //updates the number of bags the passenger has in the beggining of the journey
         this.passengersState[id] = PassengerStates.WSD; //state of passenger is "what should i do"
@@ -329,8 +330,8 @@ public class Repository {
         str = str.concat("Final report\n");
         str = str.concat("N. of passengers which have this airport as their final destination = " + passengersFinished + "\n");
         str = str.concat("N. of passengers which are in transit = " + passengersRunning + "\n");
-        str = str.concat("N. of bags that should have been transported in the the planes hold = " + (bagsInPlaneHold + bagsLost) + "\n");
-        str = str.concat("N. of bags that were lost = " + bagsLost + "\n");
+        str = str.concat("N. of bags that should have been transported in the planes hold = " + (Totalbags) + "\n");
+        str = str.concat("N. of bags that were lost = " + (Totalbags - bagsInPlaneHold) + "\n");
         return str;
     }
 

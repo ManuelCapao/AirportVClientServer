@@ -15,10 +15,11 @@ public class DepTerminalEntranceStub extends GenericStub {
         super(hostname, port);
     }
     
-    public void prepareNextLeg(){
+    public void prepareNextLeg(int id){
         
         Message out = new Message();
         out.setMessageType(MessageType.PREPARE_NEXT_LEG);
+        out.setIdentifier(id);
         this.process(out);
     }
     
@@ -40,7 +41,7 @@ public class DepTerminalEntranceStub extends GenericStub {
         
         this.process(out);
     }
-    public void simualtionFinished(){
+    public void simulationFinished(){
         
         Message out = new Message();
         

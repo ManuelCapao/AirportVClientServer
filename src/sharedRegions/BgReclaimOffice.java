@@ -5,13 +5,14 @@
  */
 package sharedRegions;
 import entities.*;
+import stubs.*;
 /**
  *
  * @author manuel
  */
-public class BgReclaimOffice {
-    private Repository rep;
-    public BgReclaimOffice(Repository rep){
+public class BgReclaimOffice implements SharedRegion{
+    private RepositoryStub rep;
+    public BgReclaimOffice(RepositoryStub rep){
         this.rep = rep;
     }
     
@@ -20,11 +21,10 @@ public class BgReclaimOffice {
     /**
      * Method for the passenger to report its missing bags
      */
-    public synchronized void reportMissingBags(){
-        Passenger passenger = (Passenger) Thread.currentThread();
-        passenger.setState(PassengerStates.BRO); //sets passenger state to "at the baggage reclaim office" 
-        rep.setPassengerState(passenger.getID(), PassengerStates.BRO);//sets passenger state to "at the baggage reclaim office" (in repository)
-        rep.bagsLost++; 
+    public synchronized void reportMissingBags(int id){
+        
+        rep.setPassengerState(id, PassengerStates.BRO);//sets passenger state to "at the baggage reclaim office" (in repository)
+        //rep.bagsLost++; 
         try {
             //passenger.sleep(3000) 
             Thread.sleep(3000); //Quick fix, simulates the process of reporting the bags, assuming it takes 3000s

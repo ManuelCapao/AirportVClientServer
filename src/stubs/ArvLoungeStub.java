@@ -59,14 +59,17 @@ public class ArvLoungeStub extends GenericStub{
         return inMessage.getBag();
     }
     
-     public void whatShouldIDo() {
-        Message out;
+     public char whatShouldIDo(int id, boolean isFinalDestination, int numberOfLuggages) {
+        Message out = new Message();
 
-        out= new Message();
+        Message in;
         out.setMessageType(MessageType.WHAT_SHOULD_I_DO);
+        out.setIdentifier(id);
+        out.setBooleanValue(isFinalDestination);
+        out.setIntValue(numberOfLuggages);
+        in = this.process(out);
+        return in.getCharValue();
         
-        this.process(out);
-
     }
      public void simulationFinished(){
         Message out;

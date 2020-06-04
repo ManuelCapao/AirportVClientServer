@@ -6,11 +6,13 @@
 package commonInfra;
 
 
+import java.io.Serializable;
+
 /**
  *
  * @author manuel
  */
-public class Bag {
+public class Bag implements Serializable {
     private int passengerID; // "Passenger" a quem pertence a mala.
     private boolean Destination; // Variavel definida para saber se a mala chegou ao destino.
     

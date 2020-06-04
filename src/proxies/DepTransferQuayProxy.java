@@ -25,10 +25,10 @@ public class DepTransferQuayProxy implements ProxyInterface{
         Message response = new Message();
         switch(message.getMessageType()) {
             case PARK_THE_BUS_AND_LET_PASS_OFF:
-                depTransferQuay.parkTheBusAndLetPassOff();
+                depTransferQuay.parkTheBusAndLetPassOff(message.getIntValue());
                 break;
             case LEAVE_THE_BUS:
-                depTransferQuay.leaveTheBus();
+                depTransferQuay.leaveTheBus(message.getIdentifier());
                 break;
             case GO_TO_ARRIVAL_TERMINAL:
                 depTransferQuay.goToArrivalTerminal();

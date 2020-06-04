@@ -9,23 +9,25 @@ import commonInfra.*;
  *
  * @author manuel
  */
-public class DepTranferQuayStub extends GenericStub{
+public class DepTransferQuayStub extends GenericStub{
     
-    public DepTranferQuayStub(String hostname, int port){
+    public DepTransferQuayStub(String hostname, int port){
         super(hostname, port);
     }
     
-    public void leaveTheBus(){
+    public void leaveTheBus(int id){
         
         Message out = new Message();
         out.setMessageType(MessageType.LEAVE_THE_BUS); 
+        out.setIdentifier(id);
         this.process(out);
     }
     
-    public void parkTheBusAndLetPassOff(){
+    public void parkTheBusAndLetPassOff(int passengers){
         
         Message out = new Message();  
-        out.setMessageType(MessageType.PARK_THE_BUS_AND_LET_PASS_OFF); 
+        out.setMessageType(MessageType.PARK_THE_BUS_AND_LET_PASS_OFF);
+        out.setIntValue(passengers);
         this.process(out);
     }
     public void goToArrivalTerminal(){
@@ -35,7 +37,7 @@ public class DepTranferQuayStub extends GenericStub{
         this.process(out);
     }
     
-    public void simualtionFinished(){
+    public void simulationFinished(){
         
         Message out = new Message();    
         out.setMessageType(MessageType.DEP_TRANSFER_QUAY_SIMULATION_FINISHED);

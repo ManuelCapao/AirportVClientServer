@@ -45,7 +45,7 @@ public class ArvLoungeProxy implements ProxyInterface{
                 response.setBag(arrivalLounge.tryToCollectABag());
                 break;
             case WHAT_SHOULD_I_DO:
-                response.setCharValue(arrivalLounge.whatShouldIDo());
+                response.setCharValue(arrivalLounge.whatShouldIDo(message.getIdentifier(), message.getBooleanValue(), message.getIntValue()));
                 break;
             case ARV_LOUNGE_SIMULATION_FINISHED:
                 simulationFinished = true;

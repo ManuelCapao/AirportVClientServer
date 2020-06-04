@@ -12,7 +12,7 @@ import entities.*;
  *
  * @author manuel
  */
-public class ArvLounge {
+public class ArvLounge implements SharedRegion{
     
     private int countPassengers; //variable that gives us the number of the current passnger
     private boolean[] passengersDestinations; //Vector with the final destination of each passenger, if true the airport is its final destination
@@ -33,6 +33,7 @@ public class ArvLounge {
      */
     
     public synchronized void takeARest(){
+        System.out.println("take a rest");
         try {
            
             wait();
@@ -45,6 +46,7 @@ public class ArvLounge {
      * 
      */
     public synchronized void fillPlaneHold(boolean[] destinations, int[] bags){
+        System.out.println("fill plane");
         this.countPassengers = 0; //puts passenger count at 0
         this.passengersDestinations = destinations;
         planeHoldBags.clear(); //clears previous plane hold
@@ -66,8 +68,7 @@ public class ArvLounge {
      * 
      */ 
     public void noMoreBagsToCollect(){
-        Porter p = (Porter) Thread.currentThread();
-        p.setPorterState(PorterStates.WPTL);
+        repository.setPorterState(PorterStates.WPTL);
     }
 
 
@@ -76,9 +77,8 @@ public class ArvLounge {
      * Porter tries to collect a bag from the planes hold and returns bag collected, return null if there are no bags in planes hold
      */
     public synchronized Bag tryToCollectABag(){
-        
-        Porter porter = (Porter) Thread.currentThread();
-        //porter.setState(PorterStates.APLH);
+
+        repository.setPorterState(PorterStates.APLH);
         if(this.planeHoldBags.empty()) return null;
         Bag bag = this.planeHoldBags.pop();
         repository.removeLuggagePlainHold(); //decreases the number of bags in planes hold (in the repository)
@@ -91,25 +91,29 @@ public class ArvLounge {
      * 
      * Checks what the Passenger should do next, depending on if the airport is its final destination and if it has any bags to collect
      */
-    public synchronized char whatShouldIDo() 
+    public synchronized char whatShouldIDo(int id, boolean isFinalDestination, int numberOfLuggages)
     {
-        Passenger p = (Passenger) Thread.currentThread();
-        repository.passengerEnterLounge(p.getID(), p.getFinalDestination(), p.getNumBags());
+        System.out.println("what should i do ");
+
+        repository.passengerEnterLounge(id, isFinalDestination, numberOfLuggages);
         this.countPassengers++;
         char toDo;
         
-        if(p.getFinalDestination() && p.getNumBags() != 0)
+        if(isFinalDestination && numberOfLuggages != 0)
         {
-            p.setState(PassengerStates.LCP);
+
+            repository.setPassengerState(id, PassengerStates.LCP);
             toDo = 'C'; //the passenger has bags and the airport is its final destination, so it must collect its bags
         }
-        else if(!p.getFinalDestination()) 
+        else if(!isFinalDestination)
         {
-            p.setState(PassengerStates.ATT);
+
+            repository.setPassengerState(id, PassengerStates.ATT);
             toDo = 'T'; //Passenger is in transit
         } 
         else{
-            p.setState(PassengerStates.EAT);
+
+            repository.setPassengerState(id, PassengerStates.EAT);
             toDo = 'E'; //the passenger doenst have any bags and has arrived at its last destination
         } 
         

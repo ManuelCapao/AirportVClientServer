@@ -27,10 +27,10 @@ public class ArvTransferQuayProxy implements ProxyInterface{
         Message response = new Message();
         switch(message.getMessageType()) {
             case READY_TO_GO:
-                arrivalTerminalTransferQuay.readyToGo();
+                response.setBooleanValue(arrivalTerminalTransferQuay.readyToGo());
                 break;
             case ANNOUNCING_BUS_BOARDING:
-                arrivalTerminalTransferQuay.announcingBusBoarding();
+                response.setIntValue(arrivalTerminalTransferQuay.announcingBusBoarding());
                 break;
             case GO_TO_DEPARTURE_TERMINAL:
                 arrivalTerminalTransferQuay.goToDepartureTerminal();
@@ -39,16 +39,16 @@ public class ArvTransferQuayProxy implements ProxyInterface{
                 arrivalTerminalTransferQuay.parkTheBus();
                 break;
             case BUS_DRIVER_END_OF_WORK:
-                arrivalTerminalTransferQuay.hasDaysWorkEnded();
+                response.setBooleanValue(arrivalTerminalTransferQuay.hasDaysWorkEnded());
                 break;
             case TAKE_A_BUS:
-                arrivalTerminalTransferQuay.takeABus();
+                arrivalTerminalTransferQuay.takeABus(message.getIdentifier());
                 break;
             case WAIT_TO_CATCH:
-                arrivalTerminalTransferQuay.waitToCatch();
+                arrivalTerminalTransferQuay.waitToCatch(message.getIdentifier());
                 break;
             case ENTER_THE_BUS:
-                arrivalTerminalTransferQuay.enterTheBus();
+                arrivalTerminalTransferQuay.enterTheBus(message.getIdentifier());
                 break;
 
             case ARV_TRANSFER_QUAY_SIMULATION_FINISHED:

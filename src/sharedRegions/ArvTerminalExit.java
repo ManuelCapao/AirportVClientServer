@@ -4,18 +4,19 @@
  * and open the template in the editor.
  */
 package sharedRegions;
+import stubs.*;
 import entities.*;
 /**
  *
  * @author manuel
  */
-public class ArvTerminalExit {
+public class ArvTerminalExit implements SharedRegion{
     
-    private DepTerminalEntrance dep;
-    private Repository rep;
+    private DepTerminalEntranceStub dep;
+    private RepositoryStub rep;
     private int countFinish;
 
-    public ArvTerminalExit(Repository rep,DepTerminalEntrance dep){
+    public ArvTerminalExit(RepositoryStub rep,DepTerminalEntranceStub dep){
         this.countFinish = 0;
         this.rep = rep;
         this.dep = dep;
@@ -26,10 +27,10 @@ public class ArvTerminalExit {
     /**
      * Passenger Goes Home
      */
-    public synchronized void goHome(){
-        Passenger passenger = (Passenger) Thread.currentThread();
-        passenger.setState(PassengerStates.EAT); //set passenger state to "exiting the arrival terminal"
-        rep.setPassengerState(passenger.getID(), PassengerStates.EAT); //sets state of the passenger with ID in the repository to "exiting the arrival terminal"
+    public synchronized void goHome(int id){
+        
+        rep.setPassengerState(id,PassengerStates.EAT); //set passenger state to "exiting the arrival terminal"
+         //sets state of the passenger with ID in the repository to "exiting the arrival terminal"
         //ponto de sincronizaçao
         //acorda passageiros que estao a espera par sair do aeroporto
         try{
@@ -46,12 +47,15 @@ public class ArvTerminalExit {
         
     }
    
-    public synchronized int getCount(){
-        return this.countFinish;
+    public int getCount(){
+        synchronized (this){
+            return this.countFinish;
+        }
+
     }
     
     /**
-     * acorda passageiros que estao a espera par sair do aeroporto
+     * acorda passageiros que estao a espera para sair do aeroporto
      */
     public synchronized void notifyPassengers(){
         notifyAll();

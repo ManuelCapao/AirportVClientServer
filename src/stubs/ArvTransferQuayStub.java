@@ -16,28 +16,29 @@ public class ArvTransferQuayStub extends GenericStub {
         super(hostname, port);
     }
     
-    public void takeABus(){
+    public void takeABus(int id){
         
-        Message out = new Message();;
+        Message out = new Message();
         
         out.setMessageType(MessageType.TAKE_A_BUS);
+        out.setIdentifier(id);
         
         this.process(out);
     }
     
-    public void waitToCatch(){
+    public void waitToCatch(int id){
         
-        Message out = new Message();;
+        Message out = new Message();
         
         out.setMessageType(MessageType.WAIT_TO_CATCH);
-        
+        out.setIdentifier(id);
         this.process(out);
     }
     
-    public void enterTheBus(){
+    public void enterTheBus(int id){
         
-        Message out= new Message();;
-        
+        Message out= new Message();
+        out.setIdentifier(id);
         out.setMessageType(MessageType.ENTER_THE_BUS);
         
         this.process(out);
@@ -57,11 +58,12 @@ public class ArvTransferQuayStub extends GenericStub {
         out.setMessageType(MessageType.PARK_THE_BUS);
         this.process(out);
     }
-    public void announcingBusBoarding(){
+    public int announcingBusBoarding(){
         Message out = new Message();
-        
+        Message in;
         out.setMessageType(MessageType.ANNOUNCING_BUS_BOARDING);
-        this.process(out);
+        in = this.process(out);
+        return in.getIntValue();
         
     }
     public boolean readyToGo(){
@@ -85,8 +87,8 @@ public class ArvTransferQuayStub extends GenericStub {
         return in.getBooleanValue();
     }
     
-    public void setSimulationFinished() {
-        Message out = new Message();;
+    public void simulationFinished() {
+        Message out = new Message();
 
         out.setMessageType(MessageType.ARV_TRANSFER_QUAY_SIMULATION_FINISHED);
 

@@ -9,17 +9,17 @@ import entities.Porter;
 import entities.PorterStates;
 import java.util.LinkedList;
 import java.util.Queue;
-
+import stubs.RepositoryStub;
 /**
  *
  * @author manuel
  */
-public class StoreRoom {
+public class StoreRoom implements SharedRegion{
     
-    private Repository repository;
+    private RepositoryStub repository;
     private Queue<Bag> bagsInStore; //bags in the store room
 
-    public StoreRoom(Repository repository){
+    public StoreRoom(RepositoryStub repository){
         this.repository = repository;
         this.bagsInStore = new LinkedList<>();
         
@@ -30,8 +30,7 @@ public class StoreRoom {
      */
     public synchronized void carryToAppropriateStore(Bag bag)
     {
-        Porter porter = (Porter) Thread.currentThread();
-        //porter.setState(PorterStates.ASTR);
+        repository.setPorterState(PorterStates.ASTR);
         this.repository.enterLuggageStoreRoom();
         this.bagsInStore.add(bag);
         

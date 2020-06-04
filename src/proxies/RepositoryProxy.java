@@ -70,7 +70,8 @@ public class RepositoryProxy implements ProxyInterface {
                 repository.addReport(); 
                 break;
             case REPOSITORY_SIMULATION_FINISHED: 
-                this.simulationFinished = true; 
+                this.simulationFinished = true;
+                System.exit(0);
                 break;
         }
         response.setMessageType(MessageType.OK);

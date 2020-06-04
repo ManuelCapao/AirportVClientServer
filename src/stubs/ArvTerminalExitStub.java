@@ -17,12 +17,13 @@ public class ArvTerminalExitStub extends GenericStub {
         super(hostname,port);
     }
     
-    public void goHome(){
+    public void goHome(int id){
         
         Message out;
 
         out= new Message();
         out.setMessageType(MessageType.GO_HOME);
+        out.setIdentifier(id);
 
         this.process(out);
     }

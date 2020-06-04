@@ -10,8 +10,6 @@ import java.util.Date;
  * @author manuel
  */
 public class Parameters {
-    
-    public static final boolean DEBUG_MODE = true;
 
     /**
      * Number of Passengers
@@ -60,31 +58,31 @@ public class Parameters {
      */
     public static final String FILENAME = "log_" + new Date().toString().replace(' ', '_') + ".txt";
     public static final String SERVER_REPOSITORY_HOSTNAME = "localhost";
-    public static final int SERVER_REPOSITORY_PORT = 8080;
+    public static final int SERVER_REPOSITORY_PORT = 21000;
 
     public static final String SERVER_ARV_LOUNGE_HOSTNAME = "localhost";
-    public static final int SERVER_ARV_LOUNGE_PORT = 8081;
+    public static final int SERVER_ARV_LOUNGE_PORT = 21001;
 
     public static final String SERVER_ARV_TERMINAL_EXIT_HOSTNAME = "localhost";
-    public static final int SERVER_ARV_TERMINAL_EXIT_PORT = 8082;
+    public static final int SERVER_ARV_TERMINAL_EXIT_PORT = 21002;
 
-    public static final String SERVER_ARV_TERMINAL_TRANSFER_QUAY_HOSTNAME = "localhost";
-    public static final int SERVER_ARV_TERMINAL_TRANSFER_QUAY_PORT = 8083;
+    public static final String SERVER_ARV_TRANSFER_QUAY_HOSTNAME = "localhost";
+    public static final int SERVER_ARV_TRANSFER_QUAY_PORT = 21003;
 
     public static final String SERVER_BG_COLLECTION_POINT_HOSTNAME = "localhost";
-    public static final int SERVER_BG_COLLECTION_POINT_PORT = 8084;
+    public static final int SERVER_BG_COLLECTION_POINT_PORT = 21004;
 
     public static final String SERVER_BG_RECLAIM_OFFICE_HOSTNAME = "localhost";
-    public static final int SERVER_BG_RECLAIM_OFFICE_PORT = 8085;
+    public static final int SERVER_BG_RECLAIM_OFFICE_PORT = 21005;
 
     public static final String SERVER_DEP_TERMINAL_ENTRANCE_HOSTNAME = "localhost";
-    public static final int SERVER_DEP_TERMINAL_ENTRANCE_PORT = 8086;
+    public static final int SERVER_DEP_TERMINAL_ENTRANCE_PORT = 21006;
 
-    public static final String SERVER_DEP_TERMINAL_TRANSFER_QUAY_HOSTNAME = "localhost";
-    public static final int SERVER_DEP_TERMINAL_TRANSFER_QUAY_PORT = 8087;
+    public static final String SERVER_DEP_TRANSFER_QUAY_HOSTNAME = "localhost";
+    public static final int SERVER_DEP_TRANSFER_QUAY_PORT = 21007;
 
     public static final String SERVER_STORE_ROOM_HOSTNAME = "localhost";
-    public static final int SERVER_STORE_ROOM_PORT = 8088;
+    public static final int SERVER_STORE_ROOM_PORT = 21008;
 
     public static String getHostName(String region) {
         String c;
@@ -95,8 +93,8 @@ public class Parameters {
             case "ArvLounge":
                 c = SERVER_ARV_LOUNGE_HOSTNAME;
                 break;
-            case "ArvTerminalTransferQuay":
-                c = SERVER_ARV_TERMINAL_TRANSFER_QUAY_HOSTNAME;
+            case "ArvTransferQuay":
+                c = SERVER_ARV_TRANSFER_QUAY_HOSTNAME;
                 break;
             case "BgCollectionPoint":
                 c = SERVER_BG_COLLECTION_POINT_HOSTNAME;
@@ -107,8 +105,8 @@ public class Parameters {
             case "DepTerminalEntrance":
                 c = SERVER_DEP_TERMINAL_ENTRANCE_HOSTNAME;
                 break;
-            case "DepTerminalTransferQuay":
-                c = SERVER_DEP_TERMINAL_TRANSFER_QUAY_HOSTNAME;
+            case "DepTransferQuay":
+                c = SERVER_DEP_TRANSFER_QUAY_HOSTNAME;
                 break;
             case "StoreRoom":
                 c = SERVER_STORE_ROOM_HOSTNAME;
@@ -129,8 +127,8 @@ public class Parameters {
             case "ArvLounge":
                 c =  SERVER_ARV_LOUNGE_PORT;
                 break;
-            case "ArvTerminalTransferQuay":
-                c =  SERVER_ARV_TERMINAL_TRANSFER_QUAY_PORT;
+            case "ArvTransferQuay":
+                c =  SERVER_ARV_TRANSFER_QUAY_PORT;
                 break;
             case "BgCollectionPoint":
                 c =  SERVER_BG_COLLECTION_POINT_PORT;
@@ -141,8 +139,8 @@ public class Parameters {
             case "DepTerminalEntrance":
                 c =  SERVER_DEP_TERMINAL_ENTRANCE_PORT;
                 break;
-            case "DepTerminalTransferQuay":
-                c =  SERVER_DEP_TERMINAL_TRANSFER_QUAY_PORT;
+            case "DepTransferQuay":
+                c =  SERVER_DEP_TRANSFER_QUAY_PORT;
                 break;
             case "StoreRoom":
                 c =  SERVER_STORE_ROOM_PORT;

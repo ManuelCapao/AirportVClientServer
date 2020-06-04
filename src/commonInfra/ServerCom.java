@@ -48,7 +48,7 @@ public class ServerCom extends GenericCom {
                 errorMessage = errorMessage.concat(String.format("Unknown error %d", port));
             }
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
     }
@@ -61,7 +61,7 @@ public class ServerCom extends GenericCom {
         catch (IOException ex) {
             errorMessage = errorMessage.concat(String.format("Could not close socket %d", port));
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
     }
@@ -81,7 +81,7 @@ public class ServerCom extends GenericCom {
                 errorMessage = errorMessage.concat("Could not open a communication channel");
             }
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
 
@@ -90,7 +90,7 @@ public class ServerCom extends GenericCom {
         } catch (Exception ex) {
             errorMessage = errorMessage.concat("Could not open IN channel of the socket");
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
 
@@ -99,7 +99,7 @@ public class ServerCom extends GenericCom {
         }catch (Exception ex) {
             errorMessage = errorMessage.concat("Could not open OUT channel of the socket");
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
 
@@ -113,7 +113,7 @@ public class ServerCom extends GenericCom {
         } catch (Exception ex) {
             errorMessage = errorMessage.concat("Could not close IN channel!");
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
 
@@ -122,7 +122,7 @@ public class ServerCom extends GenericCom {
         }catch (Exception ex){
             errorMessage = errorMessage.concat("Could not close OUT channel!");
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
 
@@ -131,7 +131,7 @@ public class ServerCom extends GenericCom {
         } catch (Exception ex){
             errorMessage = errorMessage.concat("Could not close communication socket!");
             System.out.println(errorMessage);
-            ex.printStackTrace ();
+            //ex.printStackTrace ();
             System.exit (1);
         }
     }

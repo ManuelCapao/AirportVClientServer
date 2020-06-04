@@ -28,7 +28,7 @@ public class ArvTerminalExitProxy implements ProxyInterface{
         Message response = new Message();
         switch(message.getMessageType()) {
             case GO_HOME:
-                arrivalTerminalExit.goHome();
+                arrivalTerminalExit.goHome(message.getIdentifier());
                 break;
             case ARV_TERMINAL_EXIT_GET_COUNT:
                 response.setIntValue(arrivalTerminalExit.getCount());

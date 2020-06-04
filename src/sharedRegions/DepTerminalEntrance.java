@@ -7,16 +7,16 @@ package sharedRegions;
 
 import entities.Passenger;
 import entities.PassengerStates;
-
+import stubs.*;
 /**
  *
  * @author manuel
  */
-public class DepTerminalEntrance {
+public class DepTerminalEntrance implements SharedRegion{
     private int countFinish;
-    private ArvTerminalExit arv;
-    private Repository rep;
-    public DepTerminalEntrance(Repository rep,ArvTerminalExit arv){
+    private ArvTerminalExitStub arv;
+    private RepositoryStub rep;
+    public DepTerminalEntrance(RepositoryStub rep,ArvTerminalExitStub arv){
         this.countFinish = 0;
         this.rep = rep;
         this.arv = arv;
@@ -27,9 +27,9 @@ public class DepTerminalEntrance {
     /**
      * Method used by the passenger in its last stage when in transfer
      */
-    public synchronized void prepareNextLeg(){
-        Passenger passenger = (Passenger) Thread.currentThread();
-        rep.setPassengerState(passenger.getID(), PassengerStates.EDT); //sets passenger state to "/entering the departure terminal" (in repository) 
+    public synchronized void prepareNextLeg(int id){
+        System.out.println("prepare next leg: "+ id);
+        rep.setPassengerState(id, PassengerStates.EDT); //sets passenger state to "/entering the departure terminal" (in repository) 
         try{
             this.countFinish++;
             //if its the last passengers it must notify all passengers to either go home or proceed to check in for the next lef of the journey
@@ -39,7 +39,7 @@ public class DepTerminalEntrance {
             }
             else{
                 wait();
-                passenger.setState(PassengerStates.EDT);//sets passenger state to "/entering the departure terminal"
+                
             }
             
             
@@ -47,14 +47,18 @@ public class DepTerminalEntrance {
         }catch (InterruptedException e) {}
     }
     
-    public synchronized int getCount(){
-        return this.countFinish;
+    public int getCount(){
+        synchronized (this){
+            return this.countFinish;
+        }
+
     }
     
     /**
-     * notify all passengers to either go home or proceed to check in for the next lef of the journey
+     * notify all passengers to either go home or proceed to check in for the next leg of the journey
      */
     public synchronized void notifyPassengers(){
+        System.out.println("notify: ");
         notifyAll();
     }
 }

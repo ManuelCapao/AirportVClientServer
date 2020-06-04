@@ -29,7 +29,7 @@ public class DepTerminalEntranceProxy implements ProxyInterface{
 
         switch(message.getMessageType()) {
             case PREPARE_NEXT_LEG:
-                departureTerminalEntrance.prepareNextLeg();
+                departureTerminalEntrance.prepareNextLeg(message.getIdentifier());
                 break;
             case DEP_TERMINAL_ENTRANCE_GET_COUNT:
                 response.setIntValue(departureTerminalEntrance.getCount());

@@ -2,6 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/home/manuel/Desktop/UA/4ano/SD/Projeto2git/AirportVClientServer/src/entities/BusDriver.java</file>
+            <file>file:/home/manuel/Desktop/UA/4ano/SD/Projeto2git/AirportVClientServer/src/sharedRegions/StoreRoom.java</file>
+            <file>file:/home/manuel/Desktop/UA/4ano/SD/Projeto2git/AirportVClientServer/src/proxies/RepositoryProxy.java</file>
+            <file>file:/home/manuel/Desktop/UA/4ano/SD/Projeto2git/AirportVClientServer/src/entities/Porter.java</file>
+            <file>file:/home/manuel/Desktop/UA/4ano/SD/Projeto2git/AirportVClientServer/src/sharedRegions/Repository.java</file>
+            <file>file:/home/manuel/Desktop/UA/4ano/SD/Projeto2git/AirportVClientServer/src/entities/Passenger.java</file>
+        </group>
     </open-files>
 </project-private>

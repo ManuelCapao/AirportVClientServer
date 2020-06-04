@@ -35,20 +35,19 @@ public class AirportVClientServer {
         try {
             //code application logic here
 
-            // Shared Memory Regions
-            final Repository repository = new Repository();
-            final ArvLounge arvLounge = new ArvLounge(repository);
-            final ArvTerminalExit arvTerminalExit = new ArvTerminalExit(repository);
-            final BgCollectionPoint bgCollectionPoint = new BgCollectionPoint(repository);
-            final BgReclaimOffice bgReclaimOffice = new BgReclaimOffice(repository);
-            final DepTerminalEntrance depTerminalEntrance = new DepTerminalEntrance(repository);
-            final DepTranferQuay depTransferQuay = new DepTranferQuay(repository);
-            final StoreRoom tempStorage = new StoreRoom(repository);
-            final ArvTranferQuay arvTransferQuay = new ArvTranferQuay(repository, arvTerminalExit, depTerminalEntrance);
+            // Shared Memory Region
+            final RepositoryStub repository = new RepositoryStub(Parameters.SERVER_REPOSITORY_HOSTNAME,Parameters.SERVER_REPOSITORY_PORT);
+            final ArvLoungeStub arvLounge = new ArvLoungeStub(Parameters.SERVER_ARV_LOUNGE_HOSTNAME,Parameters.SERVER_ARV_LOUNGE_PORT);
+            final ArvTerminalExitStub arvTerminalExit = new ArvTerminalExitStub(Parameters.SERVER_ARV_TERMINAL_EXIT_HOSTNAME,Parameters.SERVER_ARV_TERMINAL_EXIT_PORT);
+            final BgCollectionPointStub bgCollectionPoint = new BgCollectionPointStub(Parameters.SERVER_BG_COLLECTION_POINT_HOSTNAME,Parameters.SERVER_BG_COLLECTION_POINT_PORT);
+            final BgReclaimOfficeStub bgReclaimOffice = new BgReclaimOfficeStub(Parameters.SERVER_BG_RECLAIM_OFFICE_HOSTNAME,Parameters.SERVER_BG_RECLAIM_OFFICE_PORT);
+            final DepTerminalEntranceStub depTerminalEntrance = new DepTerminalEntranceStub(Parameters.SERVER_DEP_TERMINAL_ENTRANCE_HOSTNAME,Parameters.SERVER_DEP_TERMINAL_ENTRANCE_PORT);
+            final DepTransferQuayStub depTransferQuay = new DepTransferQuayStub(Parameters.SERVER_DEP_TRANSFER_QUAY_HOSTNAME,Parameters.SERVER_DEP_TRANSFER_QUAY_PORT);
+            final StoreRoomStub tempStorage = new StoreRoomStub(Parameters.SERVER_STORE_ROOM_HOSTNAME,Parameters.SERVER_STORE_ROOM_PORT);
+            final ArvTransferQuayStub arvTransferQuay = new ArvTransferQuayStub(Parameters.SERVER_ARV_TRANSFER_QUAY_HOSTNAME,Parameters.SERVER_ARV_TRANSFER_QUAY_PORT);
             
-            
-            arvTerminalExit.setDepTerminalEntrance(depTerminalEntrance);
-            depTerminalEntrance.setArvTerminalExit(arvTerminalExit);
+            //arvTerminalExit.setDepTerminalEntrance(depTerminalEntrance);
+            //depTerminalEntrance.setArvTerminalExit(arvTerminalExit);
 
 
             // Entities
@@ -111,6 +110,16 @@ public class AirportVClientServer {
             busDriver.join();
             porter.join();
             repository.addReport();
+            
+            arvLounge.simulationFinished();
+            arvTransferQuay.simulationFinished();
+            arvTerminalExit.simulationFinished();
+            depTransferQuay.simulationFinished();
+            depTerminalEntrance.simulationFinished();
+            bgCollectionPoint.simulationFinished();
+            bgReclaimOffice.simulationFinished();
+            tempStorage.simulationFinished();
+            repository.simulationFinished();
         }catch (Exception ex) { System.out.println(ex); }
     
     }
