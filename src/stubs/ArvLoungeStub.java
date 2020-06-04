@@ -59,13 +59,14 @@ public class ArvLoungeStub extends GenericStub{
         return inMessage.getBag();
     }
     
-     public void whatShouldIDo() {
-        Message out;
+     public char whatShouldIDo() {
+        Message out, inMessage;
 
         out= new Message();
         out.setMessageType(MessageType.WHAT_SHOULD_I_DO);
         
-        this.process(out);
+        inMessage = this.process(out);
+        return inMessage.getCharValue();
 
     }
      public void simulationFinished(){

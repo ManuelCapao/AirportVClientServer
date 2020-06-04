@@ -5,6 +5,7 @@
  */
 package entities;
 import sharedRegions.*;
+import stubs.*;
 import commonInfra.Bag;
 /**
  *
@@ -13,14 +14,14 @@ import commonInfra.Bag;
 
 public class Porter extends Thread {
     private boolean planeHoldEmpty; //true if the planes hold is empty
-    private ArvLounge arvLounge;
-    private StoreRoom tempStorage;
-    private BgCollectionPoint bgCollectionPoint;
-    private Repository repository;
+    private ArvLoungeStub arvLounge;
+    private StoreRoomStub tempStorage;
+    private BgCollectionPointStub bgCollectionPoint;
+    private RepositoryStub repository;
     private boolean keepAlive; //variable to keep the porter working if true
     private StateInterface state;
 
-    public Porter(ArvLounge arvLounge, StoreRoom tempStorage, BgCollectionPoint bgCollectionPoint, Repository repository){
+    public Porter(ArvLoungeStub arvLounge, StoreRoomStub tempStorage, BgCollectionPointStub bgCollectionPoint, RepositoryStub repository){
         super("Porter");
         this.arvLounge=arvLounge;
         this.tempStorage = tempStorage;

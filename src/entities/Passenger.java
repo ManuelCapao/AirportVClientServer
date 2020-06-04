@@ -6,7 +6,7 @@
 package entities;
 import commonInfra.*;
 import sharedRegions.*;
-
+import stubs.*;
 
 public class Passenger extends Thread{
     private int passengerID;
@@ -20,24 +20,24 @@ public class Passenger extends Thread{
     //Bags
 
     //Shared Entities
-    private ArvLounge arvLounge;
-    private ArvTransferQuay arvTransferQuay;
-    private ArvTerminalExit arvTerminalExit;
-    private DepTransferQuay depTransferQuay;
-    private DepTerminalEntrance depTerminalEntrance;
-    private BgCollectionPoint bgCollectionPoint;
-    private BgReclaimOffice bgReclaimOffice;
+    private ArvLoungeStub arvLounge;
+    private ArvTransferQuayStub arvTransferQuay;
+    private ArvTerminalExitStub arvTerminalExit;
+    private DepTranferQuayStub depTransferQuay;
+    private DepTerminalEntranceStub depTerminalEntrance;
+    private BgCollectionPointStub bgCollectionPoint;
+    private BgReclaimOfficeStub bgReclaimOffice;
 
     public Passenger(int M,
                     int numberOfLuggages,
                     boolean isFinalDestination,
-                    ArvLounge arvLounge,
-                    ArvTransferQuay arvTransferQuay,
-                    ArvTerminalExit arvTerminalExit,
-                    DepTransferQuay depTransferQuay,
-                    DepTerminalEntrance depTerminalEntrance,
-                    BgCollectionPoint bgCollectionPoint,
-                    BgReclaimOffice bgReclaimOffice){
+                    ArvLoungeStub arvLounge,
+                    ArvTransferQuayStub arvTransferQuay,
+                    ArvTerminalExitStub arvTerminalExit,
+                    DepTranferQuayStub depTransferQuay,
+                    DepTerminalEntranceStub depTerminalEntrance,
+                    BgCollectionPointStub bgCollectionPoint,
+                    BgReclaimOfficeStub bgReclaimOffice){
         super("Passenger"+ M);
         this.arvLounge = arvLounge;
         this.passengerID = M;
